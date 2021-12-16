@@ -14,6 +14,9 @@ export default function Films() {
 
   return (
     <div>
+      {films.map((item) => (
+        <p key={item.title}>{item.title}</p>
+      ))}
       <h1>Films</h1>
     </div>
   );
