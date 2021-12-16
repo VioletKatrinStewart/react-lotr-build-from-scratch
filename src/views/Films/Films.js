@@ -10,7 +10,6 @@ export default function Films() {
       setFilms(data);
     };
     fetchData();
-    console.log(films);
   }, []);
 
   return (
