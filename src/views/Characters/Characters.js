@@ -6,18 +6,47 @@ export default function Characters() {
   const [characters, setCharacters] = useState([]);
   const [race, setRace] = useState('All');
   const [query, setQuery] = useState('');
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetchCharacters(race, '');
+      setCharacters(data);
+    };
+    fetchData();
+  }, [race]);
 
   useEffect(() => {
     const fetchData = async () => {
       const data = await fetchCharacters(race, query);
       setCharacters(data);
+      setLoading(false);
     };
-    fetchData();
-  }, [query, race]);
+    if (loading) {
+      fetchData();
+    }
+  }, [query, race, loading]);
   return (
     <>
       <div>
-        <select>
+        <input
+          type="text"
+          value={query}
+          placeholder="Search"
+          onChange={(e) => {
+            setQuery(e.target.value);
+          }}
+        />
+        <button
+          onClick={() => {
+            setLoading(true);
+          }}
+        >
+          Submit
+        </button>
+      </div>
+      <div>
+        <select value={race} onChange={(e) => setRace(e.target.value)}>
           <option value="All">All</option>
           <option value="Dwarf">Dwarf</option>
           <option value="Elf">Elf</option>
