@@ -20,7 +20,7 @@ function App() {
             <Main />
           </Route>
           <Route path="/films">
-            <Films />
+            <Films films={Films} />
           </Route>
           <Route path="/characters">
             <Characters />
@@ -32,5 +32,5 @@ function App() {
       </BrowserRouter>
     </div>
   );
-
+}
 export default App;
