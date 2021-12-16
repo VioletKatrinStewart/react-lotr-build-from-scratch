@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { fetchBooks } from '../../services/books';
-import BookList from '../../components/BookList/BookList';
+import BookList from '../../components/Banana/BookList';
 
 export default function Books() {
   const [books, setBooks] = useState([]);
